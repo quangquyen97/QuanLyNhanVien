@@ -9,6 +9,7 @@ function Validation(){
         document.getElementById(spanID).style.display = 'none';
         return true;
     }
+    
     this.kiemTraTK = function(value, spanID, message){
         var pattern = /^[0-9]{4,6}$/;
         if(value.match(pattern)){

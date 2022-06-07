@@ -15,7 +15,7 @@ function getLocalStorage() {
 }
 
 function thongTinNhanVien() {
-  var taiKhoan = document.getElementById("tknv").value;
+  var taiKhoan = document.getElementById("tknv").value.trim();
   var ten = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var matKhau = document.getElementById("password").value;
@@ -63,13 +63,13 @@ function thongTinNhanVien() {
     isValid &= validation.kiemTraRong(calender,'tbNgay','Không được để trống!') && validation.kiemTraDate(calender,'tbNgay','định dạng chưa đúng');
 
     //!SALARY
-    isValid &= validation.kiemTraRong(salary,'tbLuongCB','Không được để trống!') && validation.kiemTraLuongCB(Number(salary),'tbLuongCB','Lương cơ bản 1 000 000 - 20 000 000, không để trống');
+    isValid &= validation.kiemTraRong(salary,'tbLuongCB','Không được để trống!') && validation.kiemTraLuongCB(salary,'tbLuongCB','Lương cơ bản 1 000 000 - 20 000 000, không để trống');
     
     //!Chức vụ
     isValid &= validation.kiemTraChucVu(chucVu,'tbChucVu','Không được để trống');
 
     //!TIME
-    isValid &= validation.kiemTraRong(Number(time),'tbGiolam','Không được để trống!');
+    isValid &= validation.kiemTraRong(time,'tbGiolam','Không được để trống!');
 
     if (isValid) {
       var nv = new NhanVien(
@@ -80,7 +80,7 @@ function thongTinNhanVien() {
       calender,
       Number(salary),
       chucVu,
-      time
+      Number(time)
     );
     dsnv.themNV(nv);
     setLocalStorage();
